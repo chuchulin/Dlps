@@ -1,0 +1,24 @@
+module flipflopverilog (d, clk, q);
+input d, clk; //entradas
+output [7:0] q; //salidas
+
+wire d, clk; //entradas alambradas
+reg [7:0]q =8'd0;
+reg [22:0] div;
+reg [7:0] mem,mem2; 
+
+always @(posedge clk)div=div+1;
+
+always @(posedge div[22]) 
+begin 
+mem=q;
+q[7]=d;
+q[6]=mem[7];
+q[5]=mem[6];
+q[4]=mem[5];
+q[3]=mem[4];
+q[2]=mem[3];
+q[1]=mem[2];
+q[0]=mem[1];
+end
+endmodule //se cierra el módulo del FF
